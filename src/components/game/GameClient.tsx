@@ -54,7 +54,7 @@ export default function GameClient() {
             <div className="h-3 w-3 rounded-full" style={{ background: "var(--color-pill-red)" }} />
             <div className="h-3 w-3 rounded-full -ml-1" style={{ background: "var(--color-pill-blue)" }} />
           </div>
-          <span className="text-sm font-bold tracking-[0.2em]">MINORITY MINTS</span>
+          <span className="text-sm font-bold tracking-[0.2em]">PILLS</span>
         </div>
         <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-dim">
           <span className="hidden sm:inline">{snapshot.price === 0.2 ? "$0.20" : `$${snapshot.price}`} · 10 max</span>

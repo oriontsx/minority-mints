@@ -1,4 +1,4 @@
-# Minority Mints — The Minority Mints
+# Pills — The Minority Mints
 
 > 10,000 NFTs. $0.20 each. 10-second rounds. The minority mints.
 

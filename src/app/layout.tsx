@@ -17,17 +17,17 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Minority Mints — The Minority Mints",
+  title: "Pills — The Minority Mints",
   description:
     "10,000 NFTs. $0.20 each. 10-second rounds. Every round, choose Red or Blue. The side with fewer people gets to mint.",
   openGraph: {
-    title: "Minority Mints — The Minority Mints",
+    title: "Pills — The Minority Mints",
     description: "Every 10 seconds, choose Red or Blue. The minority mints.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Minority Mints",
+    title: "Pills",
     description: "Every 10 seconds, choose Red or Blue. The minority mints.",
   },
 };

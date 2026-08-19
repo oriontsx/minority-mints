@@ -43,27 +43,6 @@ class GameStore {
   wallets = new Map<string, WalletData>();
   history: RoundResult[] = [];
 
-  // Seed a believable early history so the first visit feels live.
-  constructor() {
-    const seedWinners: Array<"red" | "blue"> = [
-      "red", "blue", "blue", "red", "blue", "red", "red", "blue", "red", "blue",
-    ];
-    for (let i = 0; i < seedWinners.length; i++) {
-      const red = 120 + Math.floor(Math.random() * 160);
-      const blue = 80 + Math.floor(Math.random() * 160);
-      const redIsMin = red <= blue;
-      const winner: "red" | "blue" = redIsMin ? "red" : "blue";
-      this.history.push({
-        round: 118 + i,
-        red: winner === "red" ? Math.min(red, blue) : Math.max(red, blue),
-        blue: winner === "blue" ? Math.min(red, blue) : Math.max(red, blue),
-        winner,
-      });
-      void seedWinners[i];
-    }
-    this.history.reverse();
-  }
-
   private getWallet(id: string): WalletData {
     let w = this.wallets.get(id);
     if (!w) {
