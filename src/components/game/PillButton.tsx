@@ -12,16 +12,14 @@ interface Props {
 
 const COLORS = {
   red: {
-    bg: "var(--color-pill-red)",
-    deep: "var(--color-pill-red-deep)",
+    bg: "#ff2d55",
+    deep: "#c0163d",
     glow: "rgba(255, 45, 85, 0.45)",
-    text: "text-glow-red",
   },
   blue: {
-    bg: "var(--color-pill-blue)",
-    deep: "var(--color-pill-blue-deep)",
-    glow: "rgba(10, 132, 255, 0.45)",
-    text: "text-glow-blue",
+    bg: "#3054ff",
+    deep: "#2040e0",
+    glow: "rgba(48, 84, 255, 0.45)",
   },
 };
 
@@ -47,10 +45,12 @@ export default function PillButton({
         ${chosen ? "scale-[1.02]" : ""}
       `}
       style={{
-        borderColor: chosen ? c.bg : "var(--color-faint)",
+        fontFamily: "var(--font-sans)",
+        borderColor: chosen ? c.bg : "rgba(255,255,255,0.1)",
         background: chosen
-          ? `radial-gradient(ellipse at 50% 0%, ${c.glow}, transparent 70%), var(--color-ash)`
-          : "var(--color-ash)",
+          ? `radial-gradient(ellipse at 50% 0%, ${c.glow}, transparent 70%), rgba(10,10,15,0.7)`
+          : "rgba(10,10,15,0.5)",
+        backdropFilter: "blur(8px)",
         ["--glow" as string]: c.glow,
       }}
     >
@@ -67,14 +67,14 @@ export default function PillButton({
       </div>
 
       <span
-        className={`text-xl font-bold tracking-[0.15em] sm:text-2xl ${c.text}`}
+        className="text-xl font-semibold tracking-[0.15em] sm:text-2xl"
         style={{ color: c.bg }}
       >
         {label}
       </span>
 
       {/* Status line */}
-      <span className="h-5 text-[11px] uppercase tracking-[0.25em] text-dim">
+      <span className="h-5 text-[11px] uppercase tracking-[0.25em] text-white/40">
         {chosen
           ? "your pick"
           : leading

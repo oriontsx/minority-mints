@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const display = Space_Grotesk({
-  variable: "--font-display",
+const sans = Instrument_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -34,8 +35,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col relative">{children}</body>
+    <html
+      lang="en"
+      className={`${sans.variable} ${serif.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col relative bg-black text-white">
+        {children}
+      </body>
     </html>
   );
 }

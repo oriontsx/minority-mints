@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
-  // Local high-resolution countdown between server polls.
   const [local, setLocal] = useState(remainingMs);
   const lastServerRef = useRef(remainingMs);
   const lastTickRef = useRef(Date.now());
@@ -38,18 +37,14 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
   const C = 2 * Math.PI * R;
   const dash = C * fraction;
 
-  let stroke = "var(--color-amber)";
-  if (phase === "locked") stroke = "var(--color-pill-red)";
-  if (phase === "revealing") stroke = "var(--color-gold)";
+  let stroke = "#ffb020";
+  if (phase === "locked") stroke = "#ff2d55";
+  if (phase === "revealing") stroke = "#ffd700";
 
   return (
-    <div className="relative h-[280px] w-[280px] flex items-center justify-center">
-      <svg
-        className="absolute inset-0 -rotate-90"
-        viewBox="0 0 280 280"
-        fill="none"
-      >
-        <circle cx="140" cy="140" r={R} stroke="var(--color-faint)" strokeWidth="2" />
+    <div className="relative flex h-[280px] w-[280px] items-center justify-center">
+      <svg className="absolute inset-0 -rotate-90" viewBox="0 0 280 280" fill="none">
+        <circle cx="140" cy="140" r={R} stroke="rgba(255,255,255,0.08)" strokeWidth="2" />
         <circle
           cx="140"
           cy="140"
@@ -60,7 +55,6 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
           strokeDasharray={`${dash} ${C}`}
           style={{ transition: "stroke-dasharray 0.1s linear, stroke 0.3s" }}
         />
-        {/* tick marks */}
         {Array.from({ length: 40 }).map((_, i) => {
           const a = (i / 40) * Math.PI * 2;
           const x1 = 140 + Math.cos(a) * 134;
@@ -74,7 +68,7 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="var(--color-faint)"
+              stroke="rgba(255,255,255,0.15)"
               strokeWidth="1"
               opacity={i / 40 < fraction ? 0.8 : 0.2}
             />
@@ -83,12 +77,12 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
       </svg>
       <div className="relative z-10 text-center">
         <div
-          className="font-mono tabular text-6xl font-bold tracking-tight"
-          style={{ color: stroke }}
+          className="text-6xl font-bold tabular tracking-tight"
+          style={{ color: stroke, fontFamily: "var(--font-sans)" }}
         >
           {seconds}
         </div>
-        <div className="mt-1 text-[10px] uppercase tracking-[0.3em] text-dim">
+        <div className="mt-1 text-[10px] uppercase tracking-[0.3em] text-white/40">
           {phase === "choosing" ? "choose" : phase === "locked" ? "locked" : "reveal"}
         </div>
       </div>

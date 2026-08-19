@@ -4,12 +4,12 @@ interface Props {
   achievements: string[];
 }
 
-const LABELS: Record<string, { icon: string; label: string; desc: string }> = {
-  red_winner: { icon: "🔴", label: "Red Winner", desc: "Won a round on Red" },
-  blue_winner: { icon: "🔵", label: "Blue Winner", desc: "Won a round on Blue" },
-  contrarian: { icon: "🧠", label: "Contrarian", desc: "Won against a large majority" },
-  streak: { icon: "🔥", label: "Streak", desc: "Won 3+ rounds in a row" },
-  last_mint: { icon: "🏆", label: "The Last Mint", desc: "Claimed the final NFT" },
+const LABELS: Record<string, { icon: string; label: string }> = {
+  red_winner: { icon: "🔴", label: "Red Winner" },
+  blue_winner: { icon: "🔵", label: "Blue Winner" },
+  contrarian: { icon: "🧠", label: "Contrarian" },
+  streak: { icon: "🔥", label: "Streak" },
+  last_mint: { icon: "🏆", label: "Last Mint" },
 };
 
 const ORDER = ["red_winner", "blue_winner", "contrarian", "streak", "last_mint"];
@@ -17,27 +17,26 @@ const ORDER = ["red_winner", "blue_winner", "contrarian", "streak", "last_mint"]
 export default function Achievements({ achievements }: Props) {
   const set = new Set(achievements);
   return (
-    <div className="surface rounded-xl p-4">
-      <div className="mb-3 text-[11px] uppercase tracking-[0.25em] text-dim">
+    <div className="w-full">
+      <div className="mb-3 text-[11px] uppercase tracking-[0.25em] text-white/40">
         Achievements
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         {ORDER.map((key) => {
           const earned = set.has(key);
           const meta = LABELS[key];
           return (
             <div
               key={key}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                earned ? "bg-ash-2" : "opacity-30"
+              className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 transition-all ${
+                earned ? "bg-white/5" : "opacity-25"
               }`}
             >
-              <span className="text-lg">{meta.icon}</span>
-              <div className="flex-1">
-                <div className="text-xs font-semibold">{meta.label}</div>
-                <div className="text-[10px] text-dim">{meta.desc}</div>
-              </div>
-              {earned && <span className="text-[10px] uppercase tracking-wider text-gold">Earned</span>}
+              <span className="text-sm">{meta.icon}</span>
+              <span className="flex-1 text-[11px] font-medium" style={{ fontFamily: "var(--font-sans)" }}>
+                {meta.label}
+              </span>
+              {earned && <span className="text-[9px] uppercase tracking-wider" style={{ color: "#ffd700" }}>Earned</span>}
             </div>
           );
         })}

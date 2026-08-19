@@ -13,31 +13,28 @@ export default function SupplyBar({ minted, max, endgame, soldOut }: Props) {
 
   return (
     <div className="w-full">
-      <div className="mb-2 flex items-baseline justify-between text-[11px] uppercase tracking-[0.25em] text-dim">
+      <div className="mb-2 flex items-baseline justify-between text-[11px] uppercase tracking-[0.25em] text-white/40">
         <span>Minted</span>
-        <span className="font-mono tabular text-ink">
-          {minted.toLocaleString()} <span className="text-dim">/ {max.toLocaleString()}</span>
+        <span className="tabular text-white">
+          {minted.toLocaleString()} <span className="text-white/40">/ {max.toLocaleString()}</span>
         </span>
       </div>
-      <div className="relative h-2 w-full overflow-hidden rounded-full bg-ash-2">
+      <div className="relative h-2 w-full overflow-hidden rounded-full bg-white/5">
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{
             width: `${pct}%`,
             background: soldOut
-              ? "var(--color-gold)"
+              ? "#ffd700"
               : endgame
-                ? "linear-gradient(90deg, var(--color-pill-red), var(--color-amber))"
-                : "linear-gradient(90deg, var(--color-pill-blue), var(--color-pill-red))",
+                ? "linear-gradient(90deg, #ff2d55, #ffb020)"
+                : "linear-gradient(90deg, #3054ff, #ff2d55)",
           }}
         />
       </div>
       <div className="mt-2 flex items-baseline justify-between text-[11px] uppercase tracking-[0.25em]">
-        <span className="text-dim">Remaining</span>
-        <span
-          className="font-mono tabular"
-          style={{ color: endgame ? "var(--color-amber)" : "var(--color-ink)" }}
-        >
+        <span className="text-white/40">Remaining</span>
+        <span className="tabular" style={{ color: endgame ? "#ffb020" : "#ffffff" }}>
           {remaining.toLocaleString()}
           {soldOut && " · COMPLETE"}
         </span>

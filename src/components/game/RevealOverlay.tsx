@@ -9,47 +9,47 @@ interface Props {
 export default function RevealOverlay({ snapshot }: Props) {
   if (snapshot.phase !== "revealing" || !snapshot.lastResult) return null;
   const r = snapshot.lastResult;
-
   const youWon = snapshot.yourResult === "won";
   const tie = r.winner === "tie";
 
   let headline = "NO WINNER";
   let sub = "The round balanced perfectly.";
-  let color = "var(--color-dim)";
+  let color = "rgba(255,255,255,0.5)";
   if (!tie) {
     headline = `${r.winner === "red" ? "🔴 RED" : "🔵 BLUE"} WINS`;
     sub = `The minority of ${r.winner === "red" ? r.red : r.blue} mints.`;
-    color = r.winner === "red" ? "var(--color-pill-red)" : "var(--color-pill-blue)";
+    color = r.winner === "red" ? "#ff2d55" : "#3054ff";
   }
 
   return (
     <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center">
-      <div
-        className="animate-flash-win text-center"
-        style={{ color }}
-      >
-        <div className="text-5xl font-bold tracking-[0.1em] sm:text-7xl" style={{ textShadow: `0 0 40px ${color}` }}>
+      <div className="animate-flash-win text-center" style={{ color }}>
+        <div
+          className="text-5xl font-bold tracking-[0.1em] sm:text-7xl"
+          style={{ textShadow: `0 0 40px ${color}`, fontFamily: "var(--font-sans)" }}
+        >
           {headline}
         </div>
-        <div className="mt-3 text-sm uppercase tracking-[0.25em] text-ink/70">
+        <div className="mt-3 text-sm uppercase tracking-[0.25em] text-white/70">
           {sub}
         </div>
       </div>
-
-      <div className="mt-6 flex items-center gap-8 font-mono text-2xl tabular animate-rise">
+      <div className="mt-6 flex items-center gap-8 text-2xl tabular animate-rise">
         <div className="text-center">
-          <div style={{ color: r.winner === "red" ? "var(--color-pill-red)" : "var(--color-dim)" }}>{r.red}</div>
-          <div className="text-[10px] uppercase tracking-wider text-dim">Red</div>
+          <div style={{ color: r.winner === "red" ? "#ff2d55" : "rgba(255,255,255,0.3)" }}>{r.red}</div>
+          <div className="text-[10px] uppercase tracking-wider text-white/40">Red</div>
         </div>
-        <div className="text-faint">—</div>
+        <div className="text-white/20">—</div>
         <div className="text-center">
-          <div style={{ color: r.winner === "blue" ? "var(--color-pill-blue)" : "var(--color-dim)" }}>{r.blue}</div>
-          <div className="text-[10px] uppercase tracking-wider text-dim">Blue</div>
+          <div style={{ color: r.winner === "blue" ? "#3054ff" : "rgba(255,255,255,0.3)" }}>{r.blue}</div>
+          <div className="text-[10px] uppercase tracking-wider text-white/40">Blue</div>
         </div>
       </div>
-
       {youWon && (
-        <div className="mt-6 animate-pop rounded-full border border-gold px-5 py-2 text-sm font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--color-gold)" }}>
+        <div
+          className="mt-6 animate-pop rounded-full border px-5 py-2 text-sm font-semibold uppercase tracking-[0.2em]"
+          style={{ color: "#ffd700", borderColor: "#ffd700" }}
+        >
           You chose the minority
         </div>
       )}
