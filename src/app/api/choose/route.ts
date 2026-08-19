@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
-import { game } from "@/lib/game";
+import { choosePill } from "@/lib/kv-store";
+import { getSnapshot } from "@/lib/kv-store";
 import { getWalletId } from "@/lib/wallet";
 import type { ChooseResponse, Pill } from "@/lib/types";
 
@@ -25,12 +26,12 @@ export async function POST(req: NextRequest) {
   }
 
   const walletId = getWalletId(req);
-  const result = game.choose(walletId, pill as Pill);
-  const snapshot = game.snapshot(walletId);
+  const result = await choosePill(walletId, pill as Pill);
+  const snapshot = await getSnapshot(walletId);
   const payload: ChooseResponse = {
     ok: result.ok,
     reason: result.reason,
-    justEarned: result.justEarned,
+    justEarned: [],
     snapshot,
   };
   return Response.json(payload);

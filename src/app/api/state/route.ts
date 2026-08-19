@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { game } from "@/lib/game";
+import { getSnapshot } from "@/lib/kv-store";
 import { newWalletId } from "@/lib/wallet";
 
 export const dynamic = "force-dynamic";
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const walletId =
     existing && /^[A-Za-z0-9_-]{8,64}$/.test(existing) ? existing : newWalletId();
 
-  const snapshot = game.snapshot(walletId);
+  const snapshot = await getSnapshot(walletId);
   const body = JSON.stringify({ snapshot });
   const headers = new Headers({ "content-type": "application/json" });
   if (!existing) {
