@@ -40,7 +40,7 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
   const stroke = "#a855f7"; // purple
 
   return (
-    <div className="relative flex items-center justify-center" style={{ width: "min(280px, 72vw)", height: "min(280px, 72vw)" }}>
+    <div className="relative flex items-center justify-center" style={{ width: "min(200px, 56vw)", height: "min(200px, 56vw)" }}>
       <svg className="absolute inset-0 -rotate-90" viewBox="0 0 280 280" fill="none">
         <circle cx="140" cy="140" r={R} stroke="rgba(255,255,255,0.08)" strokeWidth="2" />
         <circle
@@ -76,7 +76,7 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
       <div className="relative z-10 text-center">
         <div
           className="font-bold tabular tracking-tight"
-          style={{ color: stroke, fontFamily: "var(--font-sans)", fontSize: "clamp(2.5rem, 9vw, 3.75rem)" }}
+          style={{ color: stroke, fontFamily: "var(--font-sans)", fontSize: "clamp(1.75rem, 7vw, 2.75rem)" }}
         >
           {seconds}
         </div>

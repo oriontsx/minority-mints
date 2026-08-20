@@ -66,14 +66,14 @@ export default function PlayClient() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
         {/* ── Game content ─────────────────────────────────────────── */}
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center px-4 pb-12 pt-16 text-center sm:px-6 sm:pt-20 lg:justify-center lg:pt-24">
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center px-4 pb-10 pt-12 text-center sm:px-6 sm:pt-14 lg:justify-center lg:pt-16">
           {/* Back link */}
           <motion.a
             href="/"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="group absolute left-4 top-14 flex items-center gap-1.5 text-xs text-white/50 transition-colors hover:text-white sm:left-6 sm:top-20 lg:left-8"
+            className="group absolute left-4 top-12 flex items-center gap-1.5 text-xs text-white/50 transition-colors hover:text-white sm:left-6 sm:top-16 lg:left-8"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -85,7 +85,7 @@ export default function PlayClient() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-2 flex items-baseline gap-3 text-[11px] uppercase tracking-[0.3em] text-white/40"
+            className="mb-1 flex items-baseline gap-3 text-[11px] uppercase tracking-[0.3em] text-white/40"
           >
             <span>Round</span>
             <span className="text-sm text-white" style={{ fontFamily: "var(--font-sans)" }}>
@@ -108,10 +108,10 @@ export default function PlayClient() {
             />
 
             {/* Reveal overlay + pills */}
-            <div className="relative mx-auto mt-2 w-full max-w-xl">
+            <div className="relative mx-auto mt-1 w-full max-w-xl">
               {snapshot.phase === "revealing" && <RevealOverlay snapshot={snapshot} />}
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                 <PillButton
                   pill="red"
                   chosen={snapshot.yourChoice === "red"}
@@ -133,7 +133,7 @@ export default function PlayClient() {
               </div>
 
               {/* Status line */}
-              <div className="mt-4 text-sm text-white/40" style={{ fontFamily: "var(--font-sans)" }}>
+              <div className="mt-2 text-sm text-white/40" style={{ fontFamily: "var(--font-sans)" }}>
                 {snapshot.phase === "choosing" && !snapshot.yourChoice && (
                   <span>{bothTied ? "Sides are even" : "Choose your pill"}</span>
                 )}
@@ -155,7 +155,7 @@ export default function PlayClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="mt-6 flex flex-col items-center gap-6 sm:mt-8 sm:flex-row"
+            className="mt-4 flex flex-col items-center gap-6 sm:mt-5 sm:flex-row"
           >
             <button
               type="button"
@@ -178,8 +178,8 @@ export default function PlayClient() {
           </motion.div>
 
           {/* ── Game info panels ──────────────────────────────────── */}
-          <div className="mt-12 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-            <div id="supply" className="surface rounded-2xl p-4">
+          <div className="mt-8 grid w-full max-w-3xl grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+            <div id="supply" className="surface rounded-2xl p-3">
               <SupplyBar
                 minted={snapshot.minted}
                 max={snapshot.maxSupply}
@@ -187,60 +187,60 @@ export default function PlayClient() {
                 soldOut={snapshot.soldOut}
               />
             </div>
-            <div className="surface rounded-2xl p-4">
-              <div className="mb-3 text-[11px] uppercase tracking-[0.25em] text-white/40">
+            <div className="surface rounded-2xl p-3">
+              <div className="mb-2 text-[11px] uppercase tracking-[0.25em] text-white/40">
                 Your wallet
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="text-[10px] uppercase tracking-wider text-white/40">Passes</div>
-                  <div className="mt-1 text-2xl tabular" style={{ color: "var(--color-gold)" }}>
+                  <div className="mt-0.5 text-xl tabular" style={{ color: "var(--color-gold)" }}>
                     {snapshot.yourMintPasses}
                   </div>
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-wider text-white/40">Minted</div>
-                  <div className="mt-1 text-2xl tabular">
-                    {snapshot.yourMinted}<span className="text-base text-white/40">/{snapshot.maxPerWallet}</span>
+                  <div className="mt-0.5 text-xl tabular">
+                    {snapshot.yourMinted}<span className="text-sm text-white/40">/{snapshot.maxPerWallet}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="history" className="surface rounded-2xl p-4">
+            <div id="history" className="surface rounded-2xl p-3">
               <HistoryFeed recent={snapshot.recent} />
             </div>
-            <div id="achievements" className="surface rounded-2xl p-4">
+            <div id="achievements" className="surface rounded-2xl p-3">
               <Achievements achievements={snapshot.achievements} />
             </div>
           </div>
 
           {/* ── How it works ───────────────────────────────────────── */}
-          <div id="how-it-works" className="mt-16 w-full max-w-3xl scroll-mt-24">
-            <div className="mb-6 text-center text-[11px] uppercase tracking-[0.3em] text-white/40">
+          <div id="how-it-works" className="mt-10 w-full max-w-3xl scroll-mt-24">
+            <div className="mb-4 text-center text-[11px] uppercase tracking-[0.3em] text-white/40">
               How it works
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <div className="surface rounded-2xl p-5 text-left">
-                <div className="mb-2 flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white">1</div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className="surface rounded-2xl p-4 text-left">
+                <div className="mb-1.5 flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white">1</div>
                   <span className="text-sm font-semibold text-white" style={{ fontFamily: "var(--font-sans)" }}>Choose</span>
                 </div>
                 <p className="text-xs leading-relaxed text-white/50" style={{ fontFamily: "var(--font-sans)" }}>
                   Each 10-second round, pick Red or Blue. You have until the timer hits zero.
                 </p>
               </div>
-              <div className="surface rounded-2xl p-5 text-left">
-                <div className="mb-2 flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white">2</div>
+              <div className="surface rounded-2xl p-4 text-left">
+                <div className="mb-1.5 flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white">2</div>
                   <span className="text-sm font-semibold text-white" style={{ fontFamily: "var(--font-sans)" }}>Minority wins</span>
                 </div>
                 <p className="text-xs leading-relaxed text-white/50" style={{ fontFamily: "var(--font-sans)" }}>
                   The side with fewer players wins a mint pass. Ties cancel — no one mints.
                 </p>
               </div>
-              <div className="surface rounded-2xl p-5 text-left">
-                <div className="mb-2 flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white">3</div>
+              <div className="surface rounded-2xl p-4 text-left">
+                <div className="mb-1.5 flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white">3</div>
                   <span className="text-sm font-semibold text-white" style={{ fontFamily: "var(--font-sans)" }}>Mint</span>
                 </div>
                 <p className="text-xs leading-relaxed text-white/50" style={{ fontFamily: "var(--font-sans)" }}>
@@ -253,7 +253,7 @@ export default function PlayClient() {
           {/* Endgame banner */}
           {snapshot.endgame && !snapshot.soldOut && (
             <div
-              className="mt-6 rounded-xl border px-6 py-2 text-center text-sm font-semibold uppercase tracking-[0.2em] animate-pulse"
+              className="mt-4 rounded-xl border px-6 py-2 text-center text-sm font-semibold uppercase tracking-[0.2em] animate-pulse"
               style={{
                 borderColor: "var(--color-amber)",
                 color: "var(--color-amber)",
@@ -265,7 +265,7 @@ export default function PlayClient() {
           )}
           {snapshot.soldOut && (
             <div
-              className="mt-6 rounded-xl border px-6 py-2 text-center text-sm font-bold uppercase tracking-[0.2em]"
+              className="mt-4 rounded-xl border px-6 py-2 text-center text-sm font-bold uppercase tracking-[0.2em]"
               style={{ borderColor: "var(--color-gold)", color: "var(--color-gold)" }}
             >
               🏆 Collection complete · 10,000 / 10,000 minted
@@ -273,7 +273,7 @@ export default function PlayClient() {
           )}
 
           {/* Footer */}
-          <div className="mt-10 text-center text-[10px] uppercase tracking-[0.3em] text-white/30 sm:mt-12">
+          <div className="mt-8 text-center text-[10px] uppercase tracking-[0.3em] text-white/30 sm:mt-10">
             Every 10 seconds · one choice · the smaller side wins
           </div>
         </div>
