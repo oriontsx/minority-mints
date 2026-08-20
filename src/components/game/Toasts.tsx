@@ -17,13 +17,13 @@ const STYLES: Record<Toast["kind"], { border: string; icon: string }> = {
 
 export default function Toasts({ toasts }: Props) {
   return (
-    <div className="pointer-events-none fixed bottom-6 right-6 z-50 flex flex-col gap-2">
+    <div className="pointer-events-none fixed bottom-4 right-4 z-50 flex flex-col gap-2 sm:bottom-6 sm:right-6">
       {toasts.map((t) => {
         const s = STYLES[t.kind];
         return (
           <div
             key={t.id}
-            className="surface flex items-start gap-3 rounded-xl px-4 py-3 shadow-2xl animate-rise min-w-[240px] max-w-[320px]"
+            className="surface flex items-start gap-3 rounded-xl px-4 py-3 shadow-2xl animate-rise w-[calc(100vw-2rem)] max-w-[320px] sm:w-auto sm:min-w-[240px]"
             style={{ borderColor: s.border }}
           >
             <span className="text-lg">{s.icon}</span>

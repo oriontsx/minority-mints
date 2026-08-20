@@ -22,19 +22,19 @@ export default function RevealOverlay({ snapshot }: Props) {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center">
+    <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center px-4">
       <div className="animate-flash-win text-center" style={{ color }}>
         <div
-          className="text-5xl font-bold tracking-[0.1em] sm:text-7xl"
+          className="text-3xl font-bold tracking-[0.1em] sm:text-5xl md:text-7xl"
           style={{ textShadow: `0 0 40px ${color}`, fontFamily: "var(--font-sans)" }}
         >
           {headline}
         </div>
-        <div className="mt-3 text-sm uppercase tracking-[0.25em] text-white/70">
+        <div className="mt-3 text-xs uppercase tracking-[0.25em] text-white/70 sm:text-sm">
           {sub}
         </div>
       </div>
-      <div className="mt-6 flex items-center gap-8 text-2xl tabular animate-rise">
+      <div className="mt-6 flex items-center gap-6 text-xl tabular animate-rise sm:gap-8 sm:text-2xl">
         <div className="text-center">
           <div style={{ color: r.winner === "red" ? "#ff2d55" : "rgba(255,255,255,0.3)" }}>{r.red}</div>
           <div className="text-[10px] uppercase tracking-wider text-white/40">Red</div>
@@ -47,7 +47,7 @@ export default function RevealOverlay({ snapshot }: Props) {
       </div>
       {youWon && (
         <div
-          className="mt-6 animate-pop rounded-full border px-5 py-2 text-sm font-semibold uppercase tracking-[0.2em]"
+          className="mt-6 animate-pop rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm"
           style={{ color: "#ffd700", borderColor: "#ffd700" }}
         >
           You chose the minority

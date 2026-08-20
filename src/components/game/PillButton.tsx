@@ -40,7 +40,7 @@ export default function PillButton({
       type="button"
       disabled={disabled}
       onClick={() => onChoose(pill)}
-      className={`pill-btn group relative flex flex-1 flex-col items-center justify-center gap-3 rounded-2xl border px-6 py-10 sm:py-14 transition-all
+      className={`pill-btn group relative flex flex-1 flex-col items-center justify-center gap-2 rounded-2xl border px-4 py-6 sm:gap-3 sm:px-6 sm:py-10 lg:py-12 transition-all
         ${disabled ? "opacity-40" : "hover:scale-[1.02]"}
         ${chosen ? "scale-[1.02]" : ""}
       `}
@@ -55,19 +55,19 @@ export default function PillButton({
       }}
     >
       {/* Pill graphic */}
-      <div className="relative flex h-12 w-24 items-center">
+      <div className="relative flex h-10 w-20 items-center sm:h-12 sm:w-24">
         <div
-          className={`h-12 w-12 rounded-full transition-all ${chosen ? "animate-breath" : ""}`}
+          className={`h-10 w-10 rounded-full transition-all sm:h-12 sm:w-12 ${chosen ? "animate-breath" : ""}`}
           style={{ background: c.bg, boxShadow: chosen ? `0 0 30px ${c.glow}` : "none" }}
         />
         <div
-          className="h-12 w-12 rounded-full border-2"
-          style={{ background: c.deep, borderColor: "rgba(0,0,0,0.3)", marginLeft: "-12px" }}
+          className="h-10 w-10 rounded-full border-2 sm:h-12 sm:w-12"
+          style={{ background: c.deep, borderColor: "rgba(0,0,0,0.3)", marginLeft: "-10px" }}
         />
       </div>
 
       <span
-        className="text-xl font-semibold tracking-[0.15em] sm:text-2xl"
+        className="text-lg font-semibold tracking-[0.15em] sm:text-xl md:text-2xl"
         style={{ color: c.bg }}
       >
         {label}
