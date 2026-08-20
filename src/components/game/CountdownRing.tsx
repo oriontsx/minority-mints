@@ -37,9 +37,7 @@ export default function CountdownRing({ remainingMs, totalMs, phase }: Props) {
   const C = 2 * Math.PI * R;
   const dash = C * fraction;
 
-  let stroke = "#ffb020";
-  if (phase === "locked") stroke = "#ff2d55";
-  if (phase === "revealing") stroke = "#ffd700";
+  const stroke = "#a855f7"; // purple
 
   return (
     <div className="relative flex items-center justify-center" style={{ width: "min(280px, 72vw)", height: "min(280px, 72vw)" }}>

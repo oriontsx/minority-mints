@@ -100,11 +100,14 @@ export default function PlayClient() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="w-full"
           >
+          {/* Countdown ring — centered on the page */}
+          <div className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center">
             <CountdownRing
               remainingMs={snapshot.remainingMs}
               totalMs={snapshot.roundMs}
               phase={snapshot.phase}
             />
+          </div>
 
             {/* Reveal overlay + pills */}
             <div className="relative mx-auto mt-2 w-full max-w-xl">
