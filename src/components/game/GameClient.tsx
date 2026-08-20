@@ -8,7 +8,6 @@ import PillButton from "./PillButton";
 import SupplyBar from "./SupplyBar";
 import HistoryFeed from "./HistoryFeed";
 import Achievements from "./Achievements";
-import WalletPanel from "./WalletPanel";
 import Toasts from "./Toasts";
 import RevealOverlay from "./RevealOverlay";
 import Navbar from "@/components/layout/Navbar";
@@ -76,7 +75,7 @@ export default function GameClient() {
               className="text-3xl leading-[1.1] text-white sm:text-5xl lg:text-[48px]"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              Design at the speed of thought
+              10,000 NFTs. 10-second rounds.
             </p>
 
             {/* Main headline */}
@@ -87,7 +86,7 @@ export default function GameClient() {
               className="mt-2 bg-gradient-to-b from-white via-white to-[#b4c0ff] bg-clip-text text-6xl font-semibold leading-[0.9] tracking-tighter text-transparent sm:text-8xl lg:text-[136px]"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              Build Faster
+              The Minority Mints
             </motion.h1>
 
             {/* Subheadline */}
@@ -98,8 +97,8 @@ export default function GameClient() {
               className="mx-auto mt-6 max-w-xl text-lg leading-[1.65] sm:text-[20px]"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              10,000 NFTs. $0.20 each. Every 10 seconds, choose Red or Blue.
-              The side with fewer people gets to mint.
+              Every round, choose Red or Blue. The side with fewer people
+              wins a mint pass. Be in the minority.
             </motion.p>
           </motion.div>
 
@@ -113,7 +112,7 @@ export default function GameClient() {
             {/* Round + timer */}
             <div className="mb-2 flex items-baseline gap-3 text-[11px] uppercase tracking-[0.3em] text-white/40">
               <span>Round</span>
-              <span className="font-mono text-sm text-white" style={{ fontFamily: "var(--font-sans)" }}>
+              <span className="text-sm text-white" style={{ fontFamily: "var(--font-sans)" }}>
                 #{snapshot.round}
               </span>
             </div>
@@ -167,7 +166,7 @@ export default function GameClient() {
             </div>
           </motion.div>
 
-          {/* ── CTA buttons (from prompt) ───────────────────────────── */}
+          {/* ── CTA buttons ───────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,7 +186,7 @@ export default function GameClient() {
                   ? "Mint Your NFT"
                   : snapshot.yourMinted >= snapshot.maxPerWallet
                     ? "Wallet Full"
-                    : "Start Building Free"}
+                    : "Win to Mint"}
               </span>
               <span className="ml-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#3054ff] transition-colors group-hover:bg-[#2040e0]">
                 <ArrowRight className="h-5 w-5 text-white" />
@@ -196,16 +195,16 @@ export default function GameClient() {
 
             {/* Secondary CTA */}
             <a
-              href="#"
+              href="#how-it-works"
               className="group flex items-center gap-2 rounded-lg px-4 py-2 text-white/70 backdrop-blur-sm transition-all hover:bg-white/5 hover:text-white"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              See Examples
+              How It Works
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </motion.div>
 
-          {/* ── Game info sidebar (below the fold) ───────────────────── */}
+          {/* ── Game info panels ──────────────────────────────────── */}
           <div className="mt-16 grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="surface rounded-2xl p-4">
               <SupplyBar
