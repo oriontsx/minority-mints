@@ -15,16 +15,16 @@ export default function Navbar() {
       </a>
       {/* Center: Nav links */}
       <div className="hidden items-center gap-8 md:flex" style={{ fontFamily: "var(--font-sans)" }}>
-        <a href="#" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
+        <a href="/play#how-it-works" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
           How It Works
         </a>
-        <a href="#" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
+        <a href="/play#history" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
           History
         </a>
-        <a href="#" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
+        <a href="/play#achievements" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
           Achievements
         </a>
-        <a href="#" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
+        <a href="/play#supply" className="text-sm font-medium text-white/80 transition-colors hover:text-white">
           10,000 Supply
         </a>
       </div>
@@ -34,7 +34,7 @@ export default function Navbar() {
           Connect Wallet
         </a>
         <a
-          href="#"
+          href="/play"
           className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           style={{ fontFamily: "var(--font-sans)" }}
         >

@@ -1,5 +1,5 @@
-import GameClient from "@/components/game/GameClient";
+import LandingClient from "@/components/landing/LandingClient";
 
 export default function Home() {
-  return <GameClient />;
+  return <LandingClient />;
 }
